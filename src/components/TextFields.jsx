@@ -6,8 +6,9 @@ const Input = styled.input`
   height: 52px;
   background-color: "#ffffff";
   border: none;
-  padding-left: 8px;
+  padding-left: 20px;
   border-radius: 2px;
+  margin-bottom: 1rem;
 `;
 
 const Label = styled.label`

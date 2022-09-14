@@ -1,34 +1,20 @@
-import React, { useState } from 'react'
+import React from 'react'
+import { Link } from 'react-router-dom'
 import logo from "../assets/logo.png"
-import SignIn from './SignIn';
-import SignUp from './SignIn';
 
 function Menu() {
-  const [modal, setModal] = useState(false);
-  const [showModal, setShowModal] = useState(false);
-
-  const toggleSignIn = () => {
-    setModal(true);
-    setShowModal(true);
-  };
-
-  const toggleSignUp = () => {
-    setModal(true);
-    setShowModal(true);
-  };
-
   return (
-    <div>
+    <div className='menu'>
       <header className="relative w-full z-10">
         <div className="relative max-w-7xl mx-auto px-4 md:py-2 py-4">
           <div className="flex items-center justify-between md:justify-start md:space-x-10">
               {/* <!-- Left section with Logo -->
               <!-- to make nav center lg:w-0 lg:flex-1 are given --> */}
-              <a href="/" className="lg:w-0 lg:flex-1">
+              <Link to="/" className="lg:w-0 lg:flex-1">
                 {/* <!-- for screen readers --> */}
                 <span className="sr-only">divagro</span>
                 <img src={logo} alt="logo" className='w-24 m-auto' />
-              </a>
+              </Link>
               {/* <!-- Center section with nav menus --> */}
               <div className="relative">
                 {/* <!-- nav bar --> */}
@@ -61,12 +47,16 @@ function Menu() {
               <!-- to make nav center lg:w-0 md:flex-1 are given --> */}
               <div className="hidden md:flex items-center justify-end lg:w-0 md:flex-1"> 
                   {/* <!-- Action Buttons --> */}
-                  <button onClick={() => toggleSignIn()} className="hidden md:inline-flex items-center px-4 py-2  whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900 select-none">
-                    Log in
-                  </button>
-                  <button onClick={() => toggleSignUp()} className="hidden md:inline-flex relative ml-4 px-4 py-2 items-center justify-center text-white bg-indigo-600 hover:bg-indigo-700 rounded-md select-none transition-colors duration-700 whitespace-nowrap text-base font-medium">
-                    Join for Free
-                  </button>
+                  <Link to='/signin'>
+                    <button className="hidden md:inline-flex items-center px-4 py-2  whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900 select-none">
+                      Log in
+                    </button>
+                  </Link>
+                  <Link to='/signup'>
+                    <button className="hidden md:inline-flex relative ml-4 px-4 py-2 items-center justify-center text-white bg-indigo-600 hover:bg-indigo-700 rounded-md select-none transition-colors duration-700 whitespace-nowrap text-base font-medium">
+                      Join for Free
+                    </button>
+                  </Link>
               </div>	
     
               {/* <!-- mobile menu button --> */}
@@ -81,7 +71,6 @@ function Menu() {
           </div>
         </div>
       </header>
-      { modal && toggleSignIn ? <SignIn showModal={showModal} setShowModal={setShowModal} /> : <SignUp showModal={showModal} setShowModal={setShowModal} />} 
     </div>
   )
 }
